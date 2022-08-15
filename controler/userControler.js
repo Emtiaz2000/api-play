@@ -4,8 +4,8 @@ const FileName = require('../server/fileModel')
 const getUser = async (req,res)=>{
     try {
         const user = await User.find()
-        const fileN = await FileName.find()
-        console.log(fileN)
+       // const fileN = await FileName.find()
+       // console.log(fileN)
         if(user.length>0){
             res.status(201).json({message:"get the user",status:"OK",user})
         }else{
