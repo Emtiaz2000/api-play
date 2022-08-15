@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const FileName = require('./fileModel')
 
 const userSchema = new mongoose.Schema({
     userName:{
@@ -12,6 +13,10 @@ const userSchema = new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now
+    },
+    image:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"FileName"
     }
 })
 

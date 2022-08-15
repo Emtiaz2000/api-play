@@ -1,8 +1,11 @@
 const User = require('../server/model')
+const FileName = require('../server/fileModel')
 //get all user
 const getUser = async (req,res)=>{
     try {
         const user = await User.find()
+        const fileN = await FileName.find()
+        console.log(fileN)
         if(user.length>0){
             res.status(201).json({message:"get the user",status:"OK",user})
         }else{
@@ -23,7 +26,10 @@ try {
         email:req.body.email,
         createdAt:req.body.createdAt
     })
-
+    const fileNa = new FileName({
+        fileName:req.body.fileName
+    })
+    await fileNa.save()
     await newUser.save()
     res.status(201).json({message:"User Added",status:"OK"})
 } catch (error) {
